@@ -12,9 +12,14 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
+    "diff": "^8.0.2",
+    "lucide-react": "^0.536.0",
     "react": "^19.1.1",
+    "react-diff-view": "^3.3.2",
     "react-dom": "^19.1.1",
     "react-monaco-editor": "^0.59.0",
+    "react-router-dom": "^6.30.1",
     "vite": "^6.3.5"
   },
   "devDependencies": {
