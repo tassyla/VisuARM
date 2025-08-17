@@ -1,2 +1,6 @@
 backend/backend/static/outputs/
+backend/__pycache__/
 frontend/node_modules/
+backend/venv
+export_project.py
+projeto_completo.txt
