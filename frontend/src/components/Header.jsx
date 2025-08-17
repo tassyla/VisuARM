@@ -8,7 +8,7 @@ const Header = ({ activeTab, setActiveTab }) => {
   const navItems = [
     { id: 'code', label: 'Código', icon: Code },
     { id: 'assembly', label: 'Assembly & Otimização', icon: Settings2 },
-    { id: 'memory', label: 'Execução & Memória', icon: MemoryStick },
+    { id: 'memory', label: 'Tabela de Símbolos', icon: MemoryStick },
     { id: 'files', label: 'Arquivos Gerados', icon: FileDown },
   ];
 

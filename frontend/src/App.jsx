@@ -13,9 +13,6 @@ import AssemblyTab from './components/AssemblyTab';
 import MemoryTab from './components/MemoryTab';
 import FilesTab from './components/FilesTab';
 
-// Adicione o link para o Tailwind CSS no seu index.html:
-// <script src="https://cdn.tailwindcss.com"></script>
-
 function App() {
   // Estado para a aba ativa
   const [activeTab, setActiveTab] = useState('code');
@@ -55,9 +52,21 @@ function App() {
             const errorData = await response.json().catch(() => ({ error: 'Erro de comunicação com o servidor.' }));
             return { assembly: '', files: [], error: errorData.error || `Erro HTTP: ${response.status}` };
         }
-        const data = await response.json();
+                const data = await response.json();
+        console.log('Backend response data:', data); // Debug
+        console.log('Simulation trace in response:', data.simulationTrace); // Debug
+        
         if (data.status === 'success') {
-          return { assembly: data.assembly, files: data.files || [], error: null };
+          return { 
+            assembly: data.assembly, 
+            files: data.files || [], 
+            error: null,
+            memoryMap: data.memoryMap,
+            totalFlash: data.totalFlash,
+            totalRam: data.totalRam,
+            simulationTrace: data.simulationTrace,
+            status: 'success' 
+          };
         } else {
           return { assembly: '', files: [], error: data.error };
         }
@@ -101,7 +110,7 @@ function App() {
       case 'assembly':
         return <AssemblyTab result={compilationResult} onCompile={handleCompile} isLoading={isLoading} />;
       case 'memory':
-        return <MemoryTab />;
+        return <MemoryTab result={compilationResult} />;
       case 'files':
         return <FilesTab result={compilationResult} />;
       default:
